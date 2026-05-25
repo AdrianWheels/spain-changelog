@@ -1,0 +1,374 @@
+{
+  "version": "2026.21",
+  "title": "Cine a 2€ para mayores de 65",
+  "norm": "Real Decreto 400/2026",
+  "publishedBoe": "2026-05-21",
+  "inForce": "2026-05-22",
+  "branch": "Estado",
+  "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2026-10884",
+  "tldr": [
+    {
+      "emoji": "🎬",
+      "text": "Los mayores de 65 años podrán ir al cine a 2 euros un día fijo por semana durante la temporada 2026-2027."
+    },
+    {
+      "emoji": "💰",
+      "text": "El Estado destina 11,5 millones de euros para compensar a los cines, hasta 3,50 euros por cada entrada vendida."
+    },
+    {
+      "emoji": "🏛️",
+      "text": "Los cines registrados en el ICAA tienen solo 7 días desde la entrada en vigor del decreto para solicitar la ayuda."
+    },
+    {
+      "emoji": "📅",
+      "text": "El dinero llega en cinco pagos escalonados entre octubre de 2026 y julio de 2027, tras justificar las entradas vendidas."
+    },
+    {
+      "emoji": "⚠️",
+      "text": "Las salas que no publiciten el origen público del programa pueden perder la subvención completa."
+    }
+  ],
+  "changes": [
+    {
+      "kind": "NUEVO",
+      "cat": "Cultura",
+      "icon": "euro",
+      "title": "Cine a 2€ para mayores, un día por semana",
+      "body": "Los cines adheridos al programa reservarán un día fijo semanal con entradas a 2 euros para cualquier persona de 65 años o más, durante toda la temporada 2026-2027.",
+      "diff": {
+        "from": "—",
+        "to": "2 €"
+      },
+      "ref": "Art. 1",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Subvenciones",
+      "icon": "euro",
+      "title": "11,5 millones para financiar el programa",
+      "body": "El Estado destina 11,5 millones en total: 11,15 millones van directamente a los cines por las entradas vendidas, y 350.000 euros pagan a la entidad que gestiona el sistema.",
+      "diff": {
+        "from": "—",
+        "to": "11.500.000 €"
+      },
+      "ref": "Art. 7.1",
+      "refUrl": "#"
+    },
+    {
+      "kind": "AJUSTE",
+      "cat": "Subvenciones",
+      "icon": "sliders",
+      "title": "Un millón reservado si los cines venden más",
+      "body": "Del presupuesto principal, se apartan hasta un millón de euros para ampliar la ayuda de las salas que vendan más entradas de las previstas en la resolución inicial.",
+      "diff": {
+        "from": "—",
+        "to": "1.000.000 €"
+      },
+      "ref": "Art. 7.2",
+      "refUrl": "#"
+    },
+    {
+      "kind": "BUFF",
+      "cat": "Subvenciones",
+      "icon": "euro",
+      "title": "Hasta 3 millones extra si la reserva se agota",
+      "body": "Si queda presupuesto sobrante y la reserva se agota, el Gobierno puede repartir hasta 3 millones adicionales entre las salas que no puedan continuar hasta el final de la campaña.",
+      "diff": {
+        "from": "—",
+        "to": "3.000.000 €"
+      },
+      "ref": "Art. 7.3",
+      "refUrl": "#"
+    },
+    {
+      "kind": "AJUSTE",
+      "cat": "Subvenciones",
+      "icon": "calendar",
+      "title": "El gasto se reparte en dos años",
+      "body": "De los 11,5 millones totales, 4,25 millones se ejecutan en 2026 y 7,25 millones en 2027, siguiendo el calendario de la temporada cinematográfica.",
+      "diff": {
+        "from": "—",
+        "to": "4.250.000 € (2026) / 7.250.000 € (2027)"
+      },
+      "ref": "Art. 7.4",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Subvenciones",
+      "icon": "euro",
+      "title": "El cine cobra hasta 3,50€ por cada entrada",
+      "body": "Por cada entrada vendida a 2 euros, el cine recibe la diferencia con su precio habitual sin IVA, con un tope de 3,50 euros por entrada.",
+      "diff": {
+        "from": "—",
+        "to": "3,50 €"
+      },
+      "ref": "Art. 7.5.a",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Subvenciones",
+      "icon": "gavel",
+      "title": "¿Qué cines pueden participar?",
+      "body": "Cualquier sala de España —privada, pública o sin ánimo de lucro— puede adherirse, siempre que estuviera inscrita en el ICAA antes de la publicación de este decreto.",
+      "diff": null,
+      "ref": "Art. 3.1 y 3.2",
+      "refUrl": "#"
+    },
+    {
+      "kind": "AJUSTE",
+      "cat": "Subvenciones",
+      "icon": "shield",
+      "title": "Qué queda fuera del programa",
+      "body": "No pueden acogerse las salas que ya cobren 2 euros o menos ese día, ni las proyecciones de películas calificadas para adultos.",
+      "diff": null,
+      "ref": "Art. 5.4",
+      "refUrl": "#"
+    },
+    {
+      "kind": "AJUSTE",
+      "cat": "Subvenciones",
+      "icon": "sliders",
+      "title": "Las pantallas premium pueden quedar fuera",
+      "body": "Los cines con salas especiales de precio más alto (como IMAX o 4DX) pueden excluirlas del programa, pero deben indicarlo en su web y en la taquilla.",
+      "diff": null,
+      "ref": "Art. 5.1",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Administración",
+      "icon": "bell",
+      "title": "Solo 7 días para apuntarse al programa",
+      "body": "Los cines interesados tienen únicamente 7 días desde la entrada en vigor del decreto para presentar su solicitud por internet, en la sede electrónica del Ministerio de Cultura.",
+      "diff": {
+        "from": "—",
+        "to": "7 días"
+      },
+      "ref": "Art. 8.1",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Administración",
+      "icon": "scale",
+      "title": "El Ministerio responde en 30 días o se deniega",
+      "body": "El Ministerio tiene un mes para confirmar o rechazar la solicitud. Si no contesta en ese plazo, la ayuda se considera denegada automáticamente.",
+      "diff": {
+        "from": "—",
+        "to": "30 días"
+      },
+      "ref": "Art. 10.2",
+      "refUrl": "#"
+    },
+    {
+      "kind": "BUFF",
+      "cat": "Subvenciones",
+      "icon": "euro",
+      "title": "Ampliación del 50% si el cine agota su ayuda",
+      "body": "Las salas que hayan gastado el 60% de su subvención al segundo control trimestral pueden pedir una ampliación del 50% del importe inicial, con cargo a la bolsa de reserva.",
+      "diff": {
+        "from": "—",
+        "to": "50 %"
+      },
+      "ref": "Art. 11.1.a",
+      "refUrl": "#"
+    },
+    {
+      "kind": "BUFF",
+      "cat": "Subvenciones",
+      "icon": "euro",
+      "title": "Otro 30% extra tras el cuarto control",
+      "body": "Después del cuarto control trimestral, los cines que hayan gastado el 80% de su subvención pueden recibir un 30% adicional si aún quedan fondos disponibles.",
+      "diff": {
+        "from": "—",
+        "to": "30 %"
+      },
+      "ref": "Art. 11.1.b",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NERF",
+      "cat": "Subvenciones",
+      "icon": "zap",
+      "title": "Retraso en avisar cuesta el 5% de la ayuda",
+      "body": "Si un cine tarda más de 10 días en comunicar otras subvenciones recibidas o en señalar que está financiado por el Estado, pierde el 5% de la ayuda.",
+      "diff": {
+        "from": "—",
+        "to": "5 %"
+      },
+      "ref": "Art. 16.3.b",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NERF",
+      "cat": "Subvenciones",
+      "icon": "zap",
+      "title": "Sin publicidad del programa, devuelves todo",
+      "body": "Los cines que no informen a sus clientes de que el programa está financiado públicamente y no acepten alternativas del Ministerio deben reintegrar la subvención completa.",
+      "diff": null,
+      "ref": "Art. 16.3.c",
+      "refUrl": "#"
+    },
+    {
+      "kind": "AJUSTE",
+      "cat": "Subvenciones",
+      "icon": "calendar",
+      "title": "Cinco pagos entre octubre 2026 y julio 2027",
+      "body": "El dinero llega en cinco tandas escalonadas desde octubre de 2026 hasta julio de 2027, siempre después de que el cine justifique las entradas vendidas en cada periodo.",
+      "diff": null,
+      "ref": "Art. 12.3",
+      "refUrl": "#"
+    }
+  ],
+  "devNotes": {
+    "quote": "El programa busca garantizar que las personas mayores puedan participar en la vida cultural en condiciones económicas accesibles, al tiempo que contribuye a la sostenibilidad de las salas de exhibición. Las tres ediciones anteriores demostraron un efecto positivo y creciente en la asistencia de este colectivo, aunque la temporada 2025 quedó por debajo de las proyecciones. La medida se enmarca en las políticas de envejecimiento activo y en el reconocimiento del acceso a la cultura como derecho. Se tramita con carácter urgente para evitar una interrupción del programa entre campañas.",
+    "attribution": "Ministerio de Cultura"
+  },
+  "kpis": [
+    {
+      "name": "Total de entradas vendidas a 2 € durante la campaña",
+      "baseline": 0,
+      "current": null,
+      "target": 3000000,
+      "unit": "entradas",
+      "year": "2026 → 2027",
+      "source": "ICAA",
+      "sourceUrl": "#",
+      "spark": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "name": "Número de salas adheridas al programa sobre el total inscritas en ICAA",
+      "baseline": 0,
+      "current": null,
+      "target": 75,
+      "unit": "%",
+      "year": "2026 → 2027",
+      "source": "ICAA",
+      "sourceUrl": "#",
+      "spark": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "name": "Porcentaje de ejecución del presupuesto concedido",
+      "baseline": 0,
+      "current": null,
+      "target": 90,
+      "unit": "%",
+      "year": "2026 → 2027",
+      "source": "IGAE",
+      "sourceUrl": "#",
+      "spark": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "name": "Asistencia mensual de mayores de 65 años al cine en el periodo activo",
+      "baseline": 0,
+      "current": null,
+      "target": 250000,
+      "unit": "visitas/mes",
+      "year": "2026 → 2027",
+      "source": "ICAA",
+      "sourceUrl": "#",
+      "spark": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  ],
+  "winners": [
+    {
+      "who": "Personas de 65 o más años residentes en España",
+      "n": "~9.900.000",
+      "cost": "Precio reducido a 2 € por sesión, un día fijo por semana"
+    },
+    {
+      "who": "Titulares de salas de exhibición cinematográfica inscritas en el ICAA",
+      "n": "—",
+      "cost": "Hasta 3,50 € de subvención por cada entrada vendida a precio reducido"
+    }
+  ],
+  "losers": [
+    {
+      "who": "Salas cuyo precio habitual ya sea igual o inferior a 2 € ese día",
+      "n": "—",
+      "cost": "Quedan excluidas del programa sin acceso a compensación"
+    }
+  ],
+  "reversibility": {
+    "annualCost": "~11,5 M€ por campaña (4,25 M€ en 2026 y 7,25 M€ en 2027)",
+    "revertCost": "BAJO",
+    "revertNote": "Programa temporal con fecha de fin predefinida; no genera derechos consolidados más allá de la campaña 2026-2027.",
+    "review": "",
+    "consolidatedRights": [
+      "Derecho de las personas de 65 o más años a acceder al cine a 2 € un día por semana durante la vigencia de la campaña 2026-2027"
+    ]
+  },
+  "discussion": {
+    "count": 0
+  },
+  "nav": {
+    "prev": {
+      "v": "—",
+      "title": "—",
+      "date": "—",
+      "branch": "Estado",
+      "tags": [],
+      "changes": 0
+    },
+    "next": {
+      "v": "—",
+      "title": "—",
+      "date": "—",
+      "branch": "Estado",
+      "tags": [],
+      "changes": 0
+    }
+  },
+  "_review": {
+    "confidence": 0.83,
+    "warnings": [
+      "El campo dev_notes.quote no es una cita textual del BOE sino una paráfrasis sintetizada, pese a atribuirse a 'Ministerio de Cultura'.",
+      "Los KPI tienen targets numéricos (3M entradas, 75%, 90%, 250k/mes) sin baseline ni respaldo en el texto fuente; son proyecciones especulativas.",
+      "El evidence_quote de Art. 12.3 usa '[...]' y solo muestra el primer y último pago, no permite verificar plenamente que sean exactamente 'cinco'."
+    ],
+    "blocking": false
+  },
+  "_source": {
+    "norm_id": "BOE-A-2026-10884",
+    "boe_url": "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-10884"
+  }
+}
