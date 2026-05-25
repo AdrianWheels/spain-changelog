@@ -1,0 +1,31 @@
+---
+import { ICONS } from '@/lib/icons';
+
+interface Props {
+  name: string;
+  size?: number;
+  strokeWidth?: number;
+  class?: string;
+}
+
+const { name, size = 16, strokeWidth = 1.75, class: className = '' } = Astro.props;
+const d = ICONS[name];
+const parts = d ? d.split(/(?=\sM)/g).map((s) => s.trim()).filter(Boolean) : [];
+---
+
+{parts.length > 0 && (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width={strokeWidth}
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class={className}
+    aria-hidden="true"
+  >
+    {parts.map((p) => <path d={p} />)}
+  </svg>
+)}

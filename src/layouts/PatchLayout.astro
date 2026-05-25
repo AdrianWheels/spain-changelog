@@ -1,0 +1,99 @@
+---
+import '@/styles/global.css';
+import Icon from '@/components/ui/Icon.astro';
+import ThemeToggle from '@/components/ui/ThemeToggle.tsx';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Parche España — el BOE leído como un changelog.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <script is:inline>
+      (function () {
+        try {
+          const t = localStorage.getItem('parche-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {
+          /* ignore */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <header
+      class="sticky top-0 z-20 backdrop-blur-md app-header"
+      style="border-bottom:1px solid var(--border);"
+    >
+      <div
+        class="max-w-[1080px] mx-auto px-5 md:px-8 h-12 flex items-center justify-between gap-4"
+      >
+        <a href="/" class="flex items-center gap-2.5 group">
+          <div
+            class="w-5 h-5 grid place-items-center rounded-[3px] font-mono text-[10px] font-bold app-logo"
+            style="background:var(--accent);"
+          >P</div>
+          <div class="font-mono text-[12.5px] tracking-tight">
+            parche<span style="color:var(--muted);">.es</span>
+          </div>
+        </a>
+        <nav
+          class="hidden md:flex items-center gap-6 text-[12.5px]"
+          style="color:var(--text-2);"
+        >
+          <a href="/parches" class="nav-link">Parches</a>
+          <a href="#" class="nav-link">Ramas</a>
+          <a href="#" class="nav-link">KPIs</a>
+          <a href="#" class="nav-link">Suscripciones</a>
+          <a href="#" class="nav-link">Documentación</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <ThemeToggle client:load />
+          <a
+            href="#"
+            class="font-mono text-[11px] px-2.5 py-1 rounded-md app-cta"
+            style="background:var(--accent);"
+          >Iniciar sesión</a>
+        </div>
+      </div>
+    </header>
+
+    <slot />
+
+    <style>
+      :root:not([data-theme='light']) .app-header {
+        background: rgba(11, 13, 16, 0.78);
+      }
+      :root[data-theme='light'] .app-header {
+        background: rgba(247, 246, 242, 0.85);
+      }
+
+      :root:not([data-theme='light']) .app-logo,
+      :root:not([data-theme='light']) .app-cta {
+        color: #0b0d10;
+      }
+      :root[data-theme='light'] .app-logo,
+      :root[data-theme='light'] .app-cta {
+        color: #ffffff;
+      }
+
+      .nav-link:hover {
+        color: var(--text);
+      }
+    </style>
+  </body>
+</html>

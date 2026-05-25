@@ -1,0 +1,29 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import ChangelogLegend from './ChangelogLegend.astro';
+import ChangeItem from './ChangeItem.tsx';
+import type { Change } from '@/lib/types';
+
+interface Props {
+  changes: Change[];
+  density?: 'regular' | 'compact';
+}
+
+const { changes, density = 'regular' } = Astro.props;
+const blockPad = density === 'compact' ? 'p-4' : 'p-5';
+---
+
+<SectionHeading num="02" label="Changelog" anchor="changelog" meta={`${changes.length} cambios`} />
+<ChangelogLegend />
+<ol class="mt-5 space-y-3">
+  {changes.map((c, i) => (
+    <li>
+      <ChangeItem
+        client:visible
+        change={c}
+        index={i + 1}
+        blockPad={blockPad}
+      />
+    </li>
+  ))}
+</ol>

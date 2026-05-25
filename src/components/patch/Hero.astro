@@ -1,0 +1,125 @@
+---
+import Icon from '@/components/ui/Icon.astro';
+import HeroActions from './HeroActions.tsx';
+import type { Patch } from '@/lib/types';
+
+interface Props {
+  patch: Patch;
+}
+
+const { patch } = Astro.props;
+const normTail = patch.norm.split(' ').slice(-1)[0];
+---
+
+<section class="border-b" style="border-color:var(--border);">
+  <div class="max-w-[1080px] mx-auto px-5 md:px-8 pt-10 md:pt-14 pb-10 md:pb-14">
+    {/* Breadcrumbs */}
+    <div
+      class="flex items-center gap-1.5 font-mono text-[11px] mb-7"
+      style="color:var(--muted);"
+    >
+      <a href="/parches" class="hover:text-[var(--text)]">/parches</a>
+      <Icon name="chevRight" size={11} />
+      <a href={`/parches/${patch.branch.toLowerCase()}`} class="hover:text-[var(--text)]">
+        /{patch.branch.toLowerCase()}
+      </a>
+      <Icon name="chevRight" size={11} />
+      <span style="color:var(--text-2);">/{patch.version}</span>
+    </div>
+
+    <div class="grid md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-end">
+      <div>
+        <div class="flex items-center gap-2 mb-5 flex-wrap">
+          <span
+            class="inline-flex items-center gap-1.5 font-mono text-[11px] px-2 py-[3px] rounded-[3px]"
+            style="background:var(--accent-soft);color:var(--accent);"
+          >
+            <span
+              class="w-1.5 h-1.5 rounded-full"
+              style="background:var(--accent);"
+            ></span>
+            RAMA · {patch.branch}
+          </span>
+          <span
+            class="font-mono text-[11px] px-2 py-[3px] rounded-[3px] border"
+            style="border-color:var(--border-strong);color:var(--text-2);"
+          >
+            {patch.norm}
+          </span>
+          <span
+            class="font-mono text-[11px] px-2 py-[3px] rounded-[3px] border"
+            style="border-color:var(--border-strong);color:var(--text-2);"
+          >
+            {patch.changes.length} cambios
+          </span>
+        </div>
+
+        <h1
+          class="font-serif text-[40px] md:text-[56px] leading-[1.04] tracking-[-0.02em] font-medium"
+          style="text-wrap:balance;"
+        >
+          {patch.title}
+        </h1>
+
+        <div
+          class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px]"
+          style="color:var(--text-2);"
+        >
+          <div class="flex items-center gap-2">
+            <Icon name="calendar" size={13} /> Publicación BOE
+            <span class="font-mono" style="color:var(--text);">{patch.publishedBoe}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon name="zap" size={13} /> Entrada en vigor
+            <span class="font-mono" style="color:var(--text);">{patch.inForce}</span>
+          </div>
+          <a
+            href={patch.boeUrl}
+            class="flex items-center gap-1.5 font-mono text-[12px] hover:text-[var(--text)]"
+            style="color:var(--muted);"
+          >
+            <Icon name="externalLink" size={12} /> texto oficial en BOE
+          </a>
+        </div>
+
+        <HeroActions client:load version={patch.version} />
+      </div>
+
+      {/* Big version stamp */}
+      <div class="relative">
+        <div
+          class="px-5 py-4 rounded-md border"
+          style="background:var(--panel);border-color:var(--border);min-width:220px;"
+        >
+          <div
+            class="font-mono text-[10px] uppercase tracking-[0.18em]"
+            style="color:var(--muted);"
+          >
+            patch
+          </div>
+          <div
+            class="font-mono font-medium tracking-[-0.01em] leading-none mt-1"
+            style="font-size:clamp(48px, 7vw, 76px);color:var(--accent);"
+          >
+            {patch.version}
+          </div>
+          <div
+            class="mt-3 flex justify-between font-mono text-[10.5px]"
+            style="color:var(--muted);"
+          >
+            <span>año.semana</span>
+            <span>{normTail}</span>
+          </div>
+        </div>
+        <div
+          class="hidden md:flex absolute -bottom-2 left-2 right-2 justify-between"
+          aria-hidden="true"
+        >
+          {Array.from({ length: 18 }).map(() => (
+            <span class="w-px h-1.5" style="background:var(--border);"></span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

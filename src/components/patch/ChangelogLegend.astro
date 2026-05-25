@@ -1,0 +1,10 @@
+---
+import Tag from './Tag.astro';
+import { TAG_STYLES } from '@/lib/icons';
+
+const kinds = Object.keys(TAG_STYLES);
+---
+
+<div class="flex flex-wrap items-center gap-2 mb-1 -mt-1">
+  {kinds.map((k) => <Tag kind={k} />)}
+</div>

@@ -1,0 +1,65 @@
+---
+import PatchLayout from '@/layouts/PatchLayout.astro';
+import { PATCHES } from '@/data/seed-2026.18';
+
+const patches = Object.values(PATCHES);
+---
+
+<PatchLayout title="parche.es — el BOE como changelog">
+  <main class="max-w-[1080px] mx-auto px-5 md:px-8 py-16">
+    <h1
+      class="font-serif text-[44px] md:text-[64px] leading-[1.04] tracking-[-0.02em] font-medium"
+      style="text-wrap:balance;"
+    >
+      El BOE leído como un changelog.
+    </h1>
+    <p class="mt-6 text-[16px] max-w-[640px]" style="color:var(--text-2);">
+      Cada norma aprobada se publica como un parche con resumen, cambios estructurados,
+      KPIs medibles y condiciones de reversión. Datos abiertos, sin filiación política.
+    </p>
+
+    <section class="mt-16">
+      <div
+        class="font-mono text-[11px] uppercase tracking-[0.14em] mb-4"
+        style="color:var(--muted);"
+      >
+        últimos parches
+      </div>
+      <ul class="space-y-3">
+        {patches.map((p) => (
+          <li>
+            <a
+              href={`/parches/${p.version}`}
+              class="block rounded-md border p-4 transition-colors"
+              style="background:var(--panel);border-color:var(--border);"
+            >
+              <div
+                class="flex items-center justify-between font-mono text-[10.5px] uppercase tracking-[0.14em]"
+                style="color:var(--muted);"
+              >
+                <span>{p.branch} · {p.norm}</span>
+                <span style="color:var(--accent);">{p.version}</span>
+              </div>
+              <div
+                class="mt-2 text-[18px] font-medium leading-snug"
+                style="text-wrap:balance;"
+              >
+                {p.title}
+              </div>
+              <div class="mt-2 font-mono text-[11px]" style="color:var(--muted);">
+                {p.publishedBoe} · {p.changes.length} cambios
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <footer
+      class="mt-24 pt-8 border-t font-mono text-[11px]"
+      style="border-color:var(--border);color:var(--muted);"
+    >
+      parche.es · v0.4-alpha
+    </footer>
+  </main>
+</PatchLayout>

@@ -1,0 +1,56 @@
+---
+import Icon from '@/components/ui/Icon.astro';
+import type { ImpactRow } from '@/lib/types';
+
+interface Props {
+  kind: 'win' | 'lose';
+  rows: ImpactRow[];
+  density?: 'regular' | 'compact';
+}
+
+const { kind, rows, density = 'regular' } = Astro.props;
+const win = kind === 'win';
+const blockPad = density === 'compact' ? 'p-4' : 'p-5';
+---
+
+<div
+  class="rounded-lg border overflow-hidden"
+  style="background:var(--panel);border-color:var(--border);"
+>
+  <div
+    class="flex items-center gap-2 px-5 py-3 border-b font-mono text-[11px] uppercase tracking-[0.14em]"
+    style="border-color:var(--border);"
+  >
+    <span
+      class="w-4 h-4 rounded-full grid place-items-center"
+      style={
+        win
+          ? 'background:rgba(46,160,67,.18);color:#7CE38B;'
+          : 'background:rgba(248,81,73,.16);color:#FF8A82;'
+      }
+    >
+      <Icon name={win ? 'check' : 'x'} size={10} strokeWidth={2.2} />
+    </span>
+    <span style={`color:${win ? '#7CE38B' : '#FF8A82'};`}>
+      {win ? 'Beneficiados' : 'Perjudicados'}
+    </span>
+    <span class="ml-auto" style="color:var(--muted);">{rows.length}</span>
+  </div>
+  <ul class="divide-y" style="border-color:var(--border);">
+    {rows.map((r) => (
+      <li class={blockPad} style="border-color:var(--border);">
+        <div class="text-[13.5px] leading-snug" style="text-wrap:pretty;">
+          {r.who}
+        </div>
+        <div
+          class="mt-1.5 flex items-center gap-3 font-mono text-[11.5px]"
+          style="color:var(--muted);"
+        >
+          <span style="color:var(--text-2);">{r.n}</span>
+          <span>·</span>
+          <span>{r.cost}</span>
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>

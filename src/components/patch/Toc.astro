@@ -1,0 +1,43 @@
+---
+const items: [string, string, string][] = [
+  ['01', 'TL;DR', 'tldr'],
+  ['02', 'Changelog', 'changelog'],
+  ['03', 'Notas del proponente', 'dev-notes'],
+  ['04', 'KPIs prometidos', 'kpis'],
+  ['05', 'Impacto distributivo', 'impact'],
+  ['06', 'Reversibilidad', 'revert'],
+  ['07', 'Discusión', 'discussion'],
+];
+---
+
+<nav
+  class="rounded-md border p-3"
+  style="background:var(--panel);border-color:var(--border);"
+>
+  <div
+    class="font-mono text-[10px] uppercase tracking-[0.14em] mb-2 px-1.5"
+    style="color:var(--muted);"
+  >
+    índice
+  </div>
+  <ul>
+    {items.map(([n, lbl, a]) => (
+      <li>
+        <a
+          href={`#${a}`}
+          class="flex items-baseline gap-3 px-1.5 py-1 rounded text-[12.5px] toc-link"
+          style="color:var(--text-2);"
+        >
+          <span class="font-mono text-[10.5px]" style="color:var(--muted);">{n}</span>
+          {lbl}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .toc-link:hover {
+    background: var(--panel-2);
+  }
+</style>

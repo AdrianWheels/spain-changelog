@@ -1,0 +1,23 @@
+---
+interface Props {
+  num: string;
+  label: string;
+  anchor: string;
+  meta?: string;
+}
+
+const { num, label, anchor, meta } = Astro.props;
+---
+
+<div class="flex items-baseline justify-between mb-4">
+  <h2
+    id={anchor}
+    class="flex items-baseline gap-3 text-[18px] font-medium tracking-[-0.01em]"
+  >
+    <span class="font-mono text-[11px]" style="color:var(--muted);">§{num}</span>
+    {label}
+  </h2>
+  {meta && (
+    <span class="font-mono text-[11px]" style="color:var(--muted);">{meta}</span>
+  )}
+</div>

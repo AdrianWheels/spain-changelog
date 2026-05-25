@@ -1,0 +1,39 @@
+---
+import Icon from '@/components/ui/Icon.astro';
+
+interface Props {
+  count: number;
+}
+
+const { count } = Astro.props;
+---
+
+<div
+  class="rounded-lg border p-6 flex flex-col md:flex-row md:items-center justify-between gap-4"
+  style="background:var(--panel);border-color:var(--border);"
+>
+  <div>
+    <div class="font-mono text-[28px] leading-none" style="color:var(--text);">
+      {count.toLocaleString('es-ES')}
+    </div>
+    <div class="mt-2 text-[13px]" style="color:var(--muted);">
+      comentarios moderados · acreditación requerida
+    </div>
+  </div>
+  <button
+    class="inline-flex items-center gap-2 px-4 h-10 rounded-md text-[13px] discussion-cta"
+    style="background:var(--accent);"
+  >
+    <Icon name="msg" size={14} />
+    Unirse a la discusión
+  </button>
+</div>
+
+<style>
+  :root[data-theme="light"] .discussion-cta {
+    color: #ffffff;
+  }
+  :root:not([data-theme="light"]) .discussion-cta {
+    color: #0b0d10;
+  }
+</style>

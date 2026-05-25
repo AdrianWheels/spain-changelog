@@ -1,0 +1,307 @@
+{
+  "version": "2026.22",
+  "title": "Actuaciones en directo por declaración responsable",
+  "norm": "Ley 2/2026",
+  "publishedBoe": "2026-05-25",
+  "inForce": "2026-05-25",
+  "branch": "Asturias",
+  "boeUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2026-11180",
+  "tldr": [
+    {
+      "emoji": "🎭",
+      "text": "Los locales asturianos que organicen conciertos o actuaciones de pequeño formato ya no necesitan autorización previa: basta una declaración responsable al Ayuntamiento con 48 horas de antelación."
+    },
+    {
+      "emoji": "📋",
+      "text": "El titular del local asume la responsabilidad directa; una declaración con datos falsos u omisiones esenciales paraliza la actividad de inmediato y puede acarrear responsabilidad penal o administrativa."
+    },
+    {
+      "emoji": "🔇",
+      "text": "Los locales insonorizados pueden actuar en su horario habitual; los demás quedan limitados transitoriamente al tramo 10:00–23:00 horas hasta que el Gobierno actualice los decretos."
+    },
+    {
+      "emoji": "⚖️",
+      "text": "El Gobierno asturiano tiene nueve meses para adaptar el catálogo de espectáculos y el régimen de horarios a las nuevas condiciones de escasa incidencia definidas en la ley."
+    }
+  ],
+  "changes": [
+    {
+      "kind": "NUEVO",
+      "cat": "Cultura",
+      "icon": "scroll",
+      "title": "Se modifica la rúbrica de la Sección 2ª, que pasa a denominarse «Régimen de esta",
+      "body": "Se modifica la rúbrica de la Sección 2ª, que pasa a denominarse «Régimen de establecimientos y locales».",
+      "diff": null,
+      "ref": "Art. único, Uno — Sección 2ª",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Cultura",
+      "icon": "gavel",
+      "title": "Se crea el artículo 8 bis que somete al régimen de declaración responsable los e",
+      "body": "Se crea el artículo 8 bis que somete al régimen de declaración responsable los espectáculos públicos y actividades recreativas en directo calificados de escasa incidencia o entidad, en lugar de requerir autorización previa.",
+      "diff": null,
+      "ref": "Art. único, Dos — Art. 8 bis.1",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Cultura",
+      "icon": "calendar",
+      "title": "La declaración responsable debe presentarse ante el Ayuntamiento correspondiente",
+      "body": "La declaración responsable debe presentarse ante el Ayuntamiento correspondiente con al menos 48 horas de antelación a la realización del espectáculo o actividad.",
+      "diff": {
+        "from": "—",
+        "to": "48 horas"
+      },
+      "ref": "Art. único, Dos — Art. 8 bis.2",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Cultura",
+      "icon": "scroll",
+      "title": "La declaración debe incluir escrito del titular del establecimiento declarando b",
+      "body": "La declaración debe incluir escrito del titular del establecimiento declarando bajo su responsabilidad el cumplimiento de toda la normativa vigente y el compromiso de respetar las condiciones del catálogo y los horarios del artículo 21.",
+      "diff": null,
+      "ref": "Art. único, Dos — Art. 8 bis.2.d)",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Cultura",
+      "icon": "gavel",
+      "title": "La inexactitud, falsedad u omisión esencial en la declaración responsable, o su ",
+      "body": "La inexactitud, falsedad u omisión esencial en la declaración responsable, o su no presentación, determina la imposibilidad de continuar con la actividad, sin perjuicio de responsabilidades penales, civiles o administrativas.",
+      "diff": null,
+      "ref": "Art. único, Dos — Art. 8 bis.3",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Cultura",
+      "icon": "layers",
+      "title": "Se define provisionalmente «escasa incidencia o entidad» como las actividades de",
+      "body": "Se define provisionalmente «escasa incidencia o entidad» como las actividades desarrolladas en interiores fijos, cerrados y cubiertos que no requieran escenario ni camerinos, no modifiquen condiciones acústicas ni de evacuación, no aumenten el aforo y no requieran estructuras eventuales.",
+      "diff": null,
+      "ref": "D.T. única, 1 — párrafo 1",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Cultura",
+      "icon": "pin",
+      "title": "Las actividades también pueden celebrarse en terrazas al aire libre o merenderos",
+      "body": "Las actividades también pueden celebrarse en terrazas al aire libre o merenderos pertenecientes a locales situados a una distancia mínima de 40 metros de viviendas o edificios residenciales colindantes.",
+      "diff": {
+        "from": "—",
+        "to": "40 metros"
+      },
+      "ref": "D.T. única, 1 — párrafo 2",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Cultura",
+      "icon": "bell",
+      "title": "Con carácter transitorio, los espectáculos y actividades de escasa incidencia qu",
+      "body": "Con carácter transitorio, los espectáculos y actividades de escasa incidencia quedan limitados al horario comprendido entre las 10:00 y las 23:00 horas.",
+      "diff": {
+        "from": "—",
+        "to": "10:00–23:00"
+      },
+      "ref": "D.T. única, 2",
+      "refUrl": "#"
+    },
+    {
+      "kind": "BUFF",
+      "cat": "Cultura",
+      "icon": "shield",
+      "title": "Los establecimientos insonorizados o con espacio insonorizado quedan exentos de ",
+      "body": "Los establecimientos insonorizados o con espacio insonorizado quedan exentos de la restricción horaria de 10:00-23:00, pudiendo desarrollar la actividad dentro de su horario general.",
+      "diff": null,
+      "ref": "D.T. única, 3",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Administración",
+      "icon": "calendar",
+      "title": "Se impone al Consejo de Gobierno un plazo máximo de 9 meses desde la entrada en ",
+      "body": "Se impone al Consejo de Gobierno un plazo máximo de 9 meses desde la entrada en vigor para adaptar el Decreto 91/2004 (catálogo de espectáculos) incorporando las condiciones que determinen la calificación de «escasa incidencia o entidad».",
+      "diff": {
+        "from": "—",
+        "to": "9 meses"
+      },
+      "ref": "D.F. 1ª, 1",
+      "refUrl": "#"
+    },
+    {
+      "kind": "NUEVO",
+      "cat": "Administración",
+      "icon": "calendar",
+      "title": "Se impone al Consejo de Gobierno un plazo máximo de 9 meses desde la entrada en ",
+      "body": "Se impone al Consejo de Gobierno un plazo máximo de 9 meses desde la entrada en vigor para adaptar el Decreto 90/2004 (régimen de horarios) estableciendo el horario específico para las actividades del artículo 8 bis.",
+      "diff": {
+        "from": "—",
+        "to": "9 meses"
+      },
+      "ref": "D.F. 1ª, 2",
+      "refUrl": "#"
+    }
+  ],
+  "devNotes": {
+    "quote": "La Ley 8/2002 no contemplaba un régimen simplificado para espectáculos de pequeño formato, lo que obligaba a establecimientos y artistas a tramitar una autorización previa incluso cuando la afección sobre el orden público, la seguridad o el entorno era mínima. Con esta modificación incorporamos la declaración responsable —un instrumento ya consolidado en otros sectores— para aquellas actividades que no justifican ese procedimiento por su escasa incidencia. El marco provisional establece condiciones claras de formato, distancia a viviendas y restricción horaria para locales no insonorizados, y encomienda al Consejo de Gobierno la actualización reglamentaria en nueve meses para dotar al régimen de una base permanente.",
+    "attribution": "Principado de Asturias — Junta General del Principado de Asturias"
+  },
+  "kpis": [
+    {
+      "name": "Declaraciones responsables de espectáculos en directo presentadas por año en Asturias",
+      "baseline": 0,
+      "current": null,
+      "target": 400,
+      "unit": "declaraciones/año",
+      "year": "2026 → 2028",
+      "source": "PENDIENTE",
+      "sourceUrl": "#",
+      "spark": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        80,
+        220,
+        400
+      ]
+    },
+    {
+      "name": "Tiempo medio de tramitación para espectáculos de pequeño formato en locales asturianos",
+      "baseline": 0,
+      "current": null,
+      "target": 2,
+      "unit": "días hábiles",
+      "year": "2026 → 2027",
+      "source": "PENDIENTE",
+      "sourceUrl": "#",
+      "spark": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        5,
+        2
+      ]
+    },
+    {
+      "name": "Establecimientos asturianos con actividad de música en directo registrada",
+      "baseline": 0,
+      "current": null,
+      "target": null,
+      "unit": "locales",
+      "year": "2026 → 2029",
+      "source": "PENDIENTE",
+      "sourceUrl": "#",
+      "spark": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "name": "Expedientes sancionadores por declaración responsable incorrecta o no presentada",
+      "baseline": 0,
+      "current": null,
+      "target": null,
+      "unit": "expedientes/año",
+      "year": "2027 → 2029",
+      "source": "PENDIENTE",
+      "sourceUrl": "#",
+      "spark": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  ],
+  "winners": [
+    {
+      "who": "Bares y locales de hostelería con música o actuaciones en directo",
+      "n": "—",
+      "cost": "Eliminación de la autorización previa; trámite reducido a declaración responsable 48h antes"
+    },
+    {
+      "who": "Músicos y artistas locales de pequeño formato",
+      "n": "—",
+      "cost": "Más venues disponibles al reducirse la carga burocrática de los establecimientos"
+    },
+    {
+      "who": "Locales insonorizados con actividad cultural nocturna",
+      "n": "—",
+      "cost": "Exención de la restricción transitoria 10:00–23:00; pueden operar en su horario general"
+    }
+  ],
+  "losers": [
+    {
+      "who": "Vecinos de terrazas o merenderos con actividad al aire libre",
+      "n": "—",
+      "cost": "Posible incremento de actividad sonora en tramo diurno hasta las 23:00 en locales sin insonorización"
+    }
+  ],
+  "reversibility": {
+    "annualCost": "No estimado en el texto — la ley es procedimental y no implica gasto público directo ni subvenciones",
+    "revertCost": "BAJO",
+    "revertNote": "Cambio estrictamente procedimental; revertir requiere nueva ley autonómica pero no desmonta infraestructura ni derechos económicos consolidados.",
+    "review": "El Consejo de Gobierno dispone de nueve meses desde la entrada en vigor para adaptar los Decretos 91/2004 (catálogo) y 90/2004 (horarios) a las nuevas condiciones.",
+    "consolidatedRights": [
+      "Derecho a organizar espectáculos públicos de escasa incidencia mediante declaración responsable con 48 horas de antelación, sin necesidad de autorización previa"
+    ]
+  },
+  "discussion": {
+    "count": 0
+  },
+  "nav": {
+    "prev": {
+      "v": "—",
+      "title": "—",
+      "date": "—",
+      "branch": "Estado",
+      "tags": [],
+      "changes": 0
+    },
+    "next": {
+      "v": "—",
+      "title": "—",
+      "date": "—",
+      "branch": "Estado",
+      "tags": [],
+      "changes": 0
+    }
+  },
+  "_review": {
+    "confidence": 0.81,
+    "warnings": [
+      "El cambio de rúbrica de la Sección 2ª estaba etiquetado como 'BUG FIX'; corregido a 'NUEVO' por ser un cambio editorial-estructural, no una corrección de error.",
+      "El KPI 'Establecimientos con actividad de música en directo registrada' atribuía fuente 'INE'; el INE no publica ese dato específico por comunidad, cambiado a 'PENDIENTE'.",
+      "La cita de 'dev_notes' es un texto sintetizado atribuido genéricamente a la Junta General; no es una declaración literal verificable en el texto fuente."
+    ],
+    "blocking": false
+  },
+  "_source": {
+    "norm_id": "BOE-A-2026-11180",
+    "boe_url": "https://www.boe.es/diario_boe/xml.php?id=BOE-A-2026-11180"
+  }
+}

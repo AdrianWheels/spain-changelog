@@ -1,0 +1,45 @@
+---
+import type { Patch } from '@/lib/types';
+
+interface Props {
+  patch: Patch;
+}
+
+const { patch } = Astro.props;
+
+const rows: { label: string; value: string; accent?: boolean }[] = [
+  { label: 'version', value: patch.version, accent: true },
+  { label: 'norm', value: patch.norm },
+  { label: 'branch', value: patch.branch },
+  { label: 'publish', value: patch.publishedBoe },
+  { label: 'enforce', value: patch.inForce },
+  { label: 'cost/yr', value: patch.reversibility.annualCost },
+  { label: 'revert', value: patch.reversibility.revertCost },
+  { label: 'review', value: '36m' },
+];
+---
+
+<div
+  class="rounded-md border p-4"
+  style="background:var(--panel);border-color:var(--border);"
+>
+  <div
+    class="font-mono text-[10px] uppercase tracking-[0.14em] mb-3"
+    style="color:var(--muted);"
+  >
+    metadatos
+  </div>
+  <dl class="space-y-2 font-mono text-[11.5px]">
+    {rows.map((r) => (
+      <div class="flex items-baseline justify-between gap-3">
+        <dt style="color:var(--muted);">{r.label}</dt>
+        <dd
+          class="text-right"
+          style={`color:${r.accent ? 'var(--accent)' : 'var(--text)'};`}
+        >
+          {r.value}
+        </dd>
+      </div>
+    ))}
+  </dl>
+</div>

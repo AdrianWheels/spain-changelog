@@ -1,0 +1,31 @@
+/* Default = dark theme. Light theme overrides via [data-theme="light"]. */
+:root {
+  --accent: #e85d04;
+  --accent-soft: rgba(232, 93, 4, 0.13);
+
+  --bg: #0b0d10;
+  --panel: #10141a;
+  --panel-2: #161b22;
+  --border: #222831;
+  --border-strong: #2f3741;
+  --text: #eceef1;
+  --text-2: #c8cdd4;
+  --muted: #8b95a1;
+  --track: #1b2129;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f7f6f2;
+  --panel: #ffffff;
+  --panel-2: #fbfaf6;
+  --border: #e3e1da;
+  --border-strong: #c8c5bb;
+  --text: #15171b;
+  --text-2: #2e3239;
+  --muted: #6b7280;
+  --track: #eae8e1;
+
+  color-scheme: light;
+}

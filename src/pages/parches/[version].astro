@@ -1,0 +1,150 @@
+---
+import PatchLayout from '@/layouts/PatchLayout.astro';
+import Hero from '@/components/patch/Hero.astro';
+import SectionHeading from '@/components/patch/SectionHeading.astro';
+import Tldr from '@/components/patch/Tldr.tsx';
+import Changelog from '@/components/patch/Changelog.astro';
+import DevNotes from '@/components/patch/DevNotes.astro';
+import KpiCard from '@/components/patch/KpiCard.tsx';
+import ImpactColumn from '@/components/patch/ImpactColumn.astro';
+import Reversibility from '@/components/patch/Reversibility.tsx';
+import Discussion from '@/components/patch/Discussion.astro';
+import PatchNav from '@/components/patch/PatchNav.tsx';
+import Toc from '@/components/patch/Toc.astro';
+import MetaPanel from '@/components/patch/MetaPanel.astro';
+import Icon from '@/components/ui/Icon.astro';
+import { PATCHES } from '@/data/seed-2026.18';
+
+export async function getStaticPaths() {
+  return Object.values(PATCHES).map((p) => ({
+    params: { version: p.version },
+    props: { patch: p },
+  }));
+}
+
+const { patch } = Astro.props;
+
+const density = 'regular' as const;
+const sectGap = density === 'regular' ? 'mt-20' : 'mt-12';
+const blockPad = density === 'regular' ? 'p-5' : 'p-4';
+const showSparkBars = true;
+---
+
+<PatchLayout
+  title={`Parche ${patch.version} · ${patch.title} — parche.es`}
+  description={`Real Decreto-ley ${patch.norm}: ${patch.title}. Resumen y cambios estructurados.`}
+>
+  <Hero patch={patch} />
+
+  <main class="max-w-[1080px] mx-auto px-5 md:px-8 pb-24">
+    <div class="grid lg:grid-cols-[minmax(0,720px)_1fr] gap-10 lg:gap-14">
+
+      <article class="min-w-0">
+        {/* TL;DR */}
+        <section class={sectGap}>
+          <SectionHeading num="01" label="Resumen ejecutivo" anchor="tldr" />
+          <Tldr client:load items={patch.tldr} />
+        </section>
+
+        {/* Changelog */}
+        <section class={sectGap} id="changelog">
+          <Changelog changes={patch.changes} density={density} />
+        </section>
+
+        {/* Developer notes */}
+        <section class={sectGap}>
+          <SectionHeading num="03" label="Notas del proponente" anchor="dev-notes" />
+          <DevNotes notes={patch.devNotes} />
+        </section>
+
+        {/* KPIs */}
+        <section class={sectGap}>
+          <SectionHeading
+            num="04"
+            label="KPIs prometidos"
+            anchor="kpis"
+            meta={`${patch.kpis.length} métricas · revisión 36 meses`}
+          />
+          <div class="grid sm:grid-cols-2 gap-3">
+            {patch.kpis.map((k, i) => (
+              <KpiCard
+                client:visible
+                kpi={k}
+                delay={i * 80}
+                blockPad={blockPad}
+                showSpark={showSparkBars}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* Winners / Losers */}
+        <section class={sectGap}>
+          <SectionHeading num="05" label="Impacto distributivo" anchor="impact" />
+          <div class="grid md:grid-cols-2 gap-3">
+            <ImpactColumn kind="win" rows={patch.winners} density={density} />
+            <ImpactColumn kind="lose" rows={patch.losers} density={density} />
+          </div>
+        </section>
+
+        {/* Reversibility */}
+        <section class={sectGap}>
+          <SectionHeading num="06" label="Reversibilidad" anchor="revert" />
+          <Reversibility client:visible reversibility={patch.reversibility} />
+        </section>
+
+        {/* Discussion */}
+        <section class={sectGap}>
+          <SectionHeading num="07" label="Discusión comunitaria" anchor="discussion" />
+          <Discussion count={patch.discussion.count} />
+        </section>
+
+        {/* Prev / Next */}
+        <section class={sectGap}>
+          <div class="grid md:grid-cols-2 gap-3">
+            <PatchNav client:load side="prev" data={patch.nav.prev} />
+            <PatchNav client:load side="next" data={patch.nav.next} />
+          </div>
+          <div class="mt-4 text-center">
+            <a
+              href="/parches"
+              class="font-mono text-[11px] inline-flex items-center gap-1.5"
+              style="color:var(--muted);"
+            >
+              <Icon name="layers" size={11} /> ver índice completo de parches
+            </a>
+          </div>
+        </section>
+      </article>
+
+      {/* Side rail */}
+      <aside class="hidden lg:block">
+        <div class="sticky top-[68px] space-y-6">
+          <Toc />
+          <MetaPanel patch={patch} />
+        </div>
+      </aside>
+    </div>
+
+    <footer
+      class="mt-24 pt-8 border-t flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+      style="border-color:var(--border);"
+    >
+      <div class="font-mono text-[11px]" style="color:var(--muted);">
+        parche.es · datos abiertos · sin filiación política · v0.4-alpha
+      </div>
+      <div class="flex gap-5 font-mono text-[11px]" style="color:var(--muted);">
+        <a href="#" class="footer-link">metodología</a>
+        <a href="#" class="footer-link">fuentes</a>
+        <a href="#" class="footer-link">API</a>
+        <a href="#" class="footer-link">contacto</a>
+      </div>
+    </footer>
+  </main>
+
+  <style>
+    .footer-link:hover {
+      color: var(--text);
+    }
+  </style>
+</PatchLayout>

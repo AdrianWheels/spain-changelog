@@ -1,0 +1,32 @@
+---
+interface Props {
+  label: string;
+  value: string;
+  mono?: boolean;
+  accent?: boolean;
+  muted?: boolean;
+}
+
+const { label, value, mono, accent, muted } = Astro.props;
+
+const valueColor = accent
+  ? 'var(--accent)'
+  : muted
+    ? 'var(--muted)'
+    : 'var(--text)';
+---
+
+<div class="px-5 py-4" style="border-color:var(--border);">
+  <div
+    class="font-mono text-[10px] uppercase tracking-[0.14em]"
+    style="color:var(--muted);"
+  >
+    {label}
+  </div>
+  <div
+    class={`mt-1.5 ${mono ? 'font-mono' : 'font-medium'} text-[17px] leading-tight`}
+    style={`color:${valueColor};`}
+  >
+    {value}
+  </div>
+</div>

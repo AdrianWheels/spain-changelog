@@ -1,0 +1,35 @@
+---
+interface Props {
+  data: number[];
+  width?: number;
+  height?: number;
+}
+
+const { data, width = 72, height = 22 } = Astro.props;
+const min = Math.min(...data);
+const max = Math.max(...data);
+const range = Math.max(0.0001, max - min);
+const pts = data
+  .map((v, i) => {
+    const x = (i / (data.length - 1)) * width;
+    const y = height - ((v - min) / range) * height;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  })
+  .join(' ');
+---
+
+<svg
+  width={width}
+  height={height}
+  viewBox={`0 0 ${width} ${height}`}
+  aria-hidden="true"
+>
+  <polyline
+    points={pts}
+    fill="none"
+    stroke="var(--accent)"
+    stroke-width="1.25"
+    stroke-linejoin="round"
+    stroke-linecap="round"
+  />
+</svg>

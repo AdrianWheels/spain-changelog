@@ -1,0 +1,51 @@
+---
+import Icon from '@/components/ui/Icon.astro';
+
+interface Props {
+  baseline: number;
+  current: number | null;
+  target: number;
+  unit: string;
+  show?: boolean;
+}
+
+const { baseline, current, target, unit, show = true } = Astro.props;
+const goingUp = target >= baseline;
+const total = Math.abs(target - baseline);
+const progressed = current != null ? Math.abs(current - baseline) : 0;
+const pct = total === 0 ? 0 : Math.min(100, Math.max(0, (progressed / total) * 100));
+
+const fmt = (n: number) =>
+  `${n.toFixed(n < 10 && n % 1 !== 0 ? 1 : 0)}${unit}`;
+---
+
+{show && (
+  <div class="mt-3">
+    <div
+      class="relative h-[6px] rounded-full overflow-hidden"
+      style="background:var(--track);"
+    >
+      <div
+        class="absolute inset-y-0 left-0 transition-[width] duration-700"
+        style={`width:${pct}%;background:var(--accent);`}
+      ></div>
+      <div
+        class="absolute inset-y-[-3px] right-0 w-[2px]"
+        style="background:var(--text);"
+      ></div>
+    </div>
+    <div
+      class="flex justify-between mt-1.5 font-mono text-[10.5px]"
+      style="color:var(--muted);"
+    >
+      <span>{fmt(baseline)}</span>
+      {current != null && (
+        <span style="color:var(--text);" class="inline-flex items-center gap-1">
+          <Icon name={goingUp ? 'trendingUp' : 'trendingDown'} size={11} />
+          {fmt(current)}
+        </span>
+      )}
+      <span>{fmt(target)}</span>
+    </div>
+  </div>
+)}

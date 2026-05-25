@@ -1,0 +1,45 @@
+# build
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment
+.env
+.env.production
+.env.local
+
+# editor
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ingesta BOE
+.boe-cache/
+out/*.stage*.json
+out/*.text.txt
+__pycache__/
+*.pyc
+
+# InsForge & AI agent skills
+.insforge
+.agent
+.agents
+.augment
+.claude
+.cline
+.github/copilot*
+.kilocode
+.qoder
+.qwen
+.roo
+.trae
+.windsurf
