@@ -2,6 +2,19 @@
 
 Recibirás el objeto del Stage 2 (cambios ya clasificados). Tienes que producir la "vista editorial" del parche: lo que un usuario joven (18-35) verá en la página de detalle de `parche.es`.
 
+## Lo más importante: reescribir cada cambio (no lo dejes en jerga jurídica)
+
+Recibes `raw_changes` con un `summary` neutro-jurídico y una `evidence_quote` literal. Esos textos **NO se muestran tal cual** al usuario: son demasiado técnicos. Para **cada** elemento de `raw_changes`, **añade dos campos nuevos** reescribiendo el cambio para una persona de 18-35 años sin formación jurídica:
+
+- **`display_title`**: titular corto y claro, **3-8 palabras**, lenguaje cotidiano. Sin comillas legales, sin "rúbrica", "disposición", "en su virtud", sin nombres de artículos. Debe entenderse de un vistazo.
+  - Malo: *"Se modifica la rúbrica de la Sección 2ª, que pasa a denominarse «Régimen de establecimientos y locales»"*
+  - Bueno: *"Conciertos pequeños sin permiso previo"*
+- **`display_body`**: **1-2 frases (20-45 palabras)** explicando en plano **qué cambia y qué significa en la práctica** para la gente. Nada de citar el articulado literal ni reproducir la redacción legal; tradúcela. Concreta el efecto real (quién puede hacer qué ahora, qué deja de hacer falta, qué límite aplica).
+  - Malo: *"Se añade un artículo 8 bis que somete al régimen de declaración responsable los espectáculos de escasa incidencia."*
+  - Bueno: *"Los bares y locales pequeños ya no necesitan pedir autorización para organizar actuaciones en directo: basta con avisar al Ayuntamiento 48 horas antes."*
+
+Conserva intactos el resto de campos del cambio (`ref`, `kind`, `icon`, `category`, `evidence_quote`, `numeric_before`, `numeric_after`): la cita literal sigue siendo el respaldo de verdad, solo que no es lo que se muestra de primeras.
+
 ## Campos a producir
 
 1. **`version`**: usa el patrón `YYYY.WW` donde WW es la semana ISO de `published_date`. Ejemplo: si la norma se publicó el 28 de abril de 2026 (semana ISO 18), version = `"2026.18"`.
@@ -52,7 +65,7 @@ Recibirás el objeto del Stage 2 (cambios ya clasificados). Tienes que producir 
 ## Output
 
 Objeto JSON que combine:
-- Todo lo que ya tenías del Stage 2 (norm_id, branch, raw_changes con kind/icon/category, etc.)
+- Todo lo que ya tenías del Stage 2 (norm_id, branch, raw_changes con kind/icon/category, etc.), **con `display_title` y `display_body` añadidos a cada raw_change**.
 - Los campos nuevos que acabo de listar.
 
 Sin markdown, sin comentarios.

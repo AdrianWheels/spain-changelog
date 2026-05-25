@@ -110,13 +110,17 @@ def to_app_shape(stage3: dict[str, Any], stage4: dict[str, Any]) -> dict[str, An
             diff = {"from": c["numeric_before"], "to": c["numeric_after"]}
         elif c.get("numeric_after") and not c.get("numeric_before"):
             diff = {"from": "—", "to": c["numeric_after"]}
+        # display_title/display_body los produce el stage3 reescribiendo en
+        # lenguaje plano; el summary jurídico queda solo como fallback.
+        title = c.get("display_title") or c.get("summary", "")[:80]
+        body = c.get("display_body") or c.get("summary", "")
         changes_out.append(
             {
                 "kind": c.get("kind", "AJUSTE"),
                 "cat": c.get("category", "Otra"),
                 "icon": c.get("icon", "scroll"),
-                "title": c.get("summary", "")[:80],
-                "body": c.get("summary", ""),
+                "title": title,
+                "body": body,
                 "diff": diff,
                 "ref": c.get("ref", ""),
                 "refUrl": "#",

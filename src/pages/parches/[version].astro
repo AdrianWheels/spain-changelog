@@ -13,10 +13,11 @@ import PatchNav from '@/components/patch/PatchNav.tsx';
 import Toc from '@/components/patch/Toc.astro';
 import MetaPanel from '@/components/patch/MetaPanel.astro';
 import Icon from '@/components/ui/Icon.astro';
-import { PATCHES } from '@/data/seed-2026.18';
+import { getAllPatches } from '@/lib/patches';
 
 export async function getStaticPaths() {
-  return Object.values(PATCHES).map((p) => ({
+  const patches = await getAllPatches();
+  return patches.map((p) => ({
     params: { version: p.version },
     props: { patch: p },
   }));

@@ -1,8 +1,9 @@
 ---
 import PatchLayout from '@/layouts/PatchLayout.astro';
-import { PATCHES } from '@/data/seed-2026.18';
+import { getAllPatches } from '@/lib/patches';
 
-const patches = Object.values(PATCHES);
+// getAllPatches viene ascendente por fecha; en el índice queremos el más reciente arriba.
+const patches = (await getAllPatches()).reverse();
 ---
 
 <PatchLayout title="parche.es — el BOE como changelog">
@@ -25,6 +26,11 @@ const patches = Object.values(PATCHES);
       >
         últimos parches
       </div>
+      {patches.length === 0 && (
+        <p class="font-mono text-[12px]" style="color:var(--muted);">
+          Aún no hay parches publicados.
+        </p>
+      )}
       <ul class="space-y-3">
         {patches.map((p) => (
           <li>

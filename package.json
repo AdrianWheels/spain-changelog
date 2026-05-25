@@ -8,7 +8,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -16,6 +17,7 @@
     "@fontsource-variable/inter": "^5.1.1",
     "@fontsource-variable/jetbrains-mono": "^5.1.1",
     "@fontsource/instrument-serif": "^5.1.1",
+    "@insforge/sdk": "^1.2.10",
     "@tailwindcss/vite": "^4.0.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
@@ -24,5 +26,8 @@
     "react-dom": "^18.3.1",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "tsx": "^4.22.3"
   }
 }

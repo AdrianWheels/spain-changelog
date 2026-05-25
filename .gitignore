@@ -22,6 +22,10 @@ pnpm-debug.log*
 .DS_Store
 Thumbs.db
 
+# artefactos de pruebas con navegador (Playwright MCP)
+.playwright-mcp/
+/*.png
+
 # ingesta BOE
 .boe-cache/
 out/*.stage*.json
