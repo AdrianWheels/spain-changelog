@@ -1,59 +1,93 @@
 # Handoff — Spain Changelog (parche.es)
 
-Pega el bloque de "Prompt para nueva sesión" como primer mensaje en una ventana nueva. Todo el contexto necesario está dentro.
+Estado del proyecto al **2026-05-25**. Pega "Prompt para nueva sesión" como primer mensaje si retomas en una ventana nueva.
 
 ---
 
-## Prompt para nueva sesión
+## Qué es
 
-> Estoy continuando el proyecto **spain-changelog** en `D:\Proyectos\spain-changelog`. Es una web tipo "patch notes de videojuego" que reformatea el BOE (Boletín Oficial del Estado) para audiencia joven. Stack ya decidido: Astro 5 + React 18 + Tailwind v4 + InsForge (Postgres BaaS) + pipeline Python que llama a `claude -p` CLI. NO usar el SDK de Anthropic — el usuario tiene una memoria explícita que prefiere shellear al CLI.
->
-> **Estado actual:**
->
-> - **V0 frontend completo y verificado visualmente** por el usuario. Componentes Astro + islas React `.tsx` con dark/light toggle, fade-in KPIs, hover prev/next, etc. Datos hardcodeados en `src/data/seed-2026.18.ts`. Ruta funcionando: `/parches/2026.18`.
-> - **Pipeline `ingest/` escrito pero con bug**: `ingest/boe_client.py` falla al parsear el sumario BOE con `xml.etree.ElementTree.ParseError: mismatched tag: line 22, column 4`. El parser asume una estructura XML que no coincide con la real. Hay que investigar el formato real del sumario de `https://www.boe.es/diario_boe/xml.php?id=BOE-S-YYYYMMDD` (puede que la URL haya cambiado, o que el XML contenga HTML inline en títulos que rompe el parser estricto, o que el endpoint devuelva HTML cuando no hay sumario). Mira la API de datos abiertos del BOE: https://www.boe.es/datosabiertos/.
-> - **InsForge NO linkeado todavía**. El usuario me dará el `.env` cuando ejecute `npx @insforge/cli link --project-id 8b6f4ec1-6a95-4b55-ac51-2893a644cf5c`.
->
-> **Tareas pendientes en orden:**
->
-> 1. Arreglar el ParseError del BOE en `ingest/boe_client.py`. Verifica la URL real (puede que sea `boe.es/datosabiertos/api/...` ahora) y el formato. Después ejecuta `python -m ingest.run --list` y luego `python -m ingest.run` para procesar una norma real. Coste estimado del pipeline completo: ~$0.80/norma.
-> 2. Cuando el usuario te pase las credenciales InsForge: crear `db/schema.sql` con las tablas del plan (patches, changes, kpis, impact_rows, dev_notes, reversibility, tldr_items, subscriptions), `src/lib/insforge.ts` cliente singleton, y `scripts/seed.ts` que toma `out/<id>.patch.json` del pipeline y hace UPSERT a todas las tablas. Usa el skill `insforge-cli` para schema/migraciones y el skill `insforge` para el cliente SDK.
-> 3. Adaptar `src/pages/parches/[version].astro` para que `getStaticPaths` lea de InsForge en build time. Verificar visualmente.
->
-> **Decisiones ya tomadas (NO re-debatir):**
->
-> - Stack: Astro 5 + React 18 + Tailwind v4 + InsForge. No Next.js, no Supabase, no drop literal del bundle Claude Design.
-> - LLM via `claude -p --output-format json` (CLI, no SDK). Wrapper en `ingest/llm.py`. Modelos: Sonnet 4.6 para extracción/síntesis, Haiku 4.5 para clasificación, Opus 4.7 para revisión.
-> - Pipeline 4 stages con prompts en `ingest/prompts/stage{1..4}_*.md`. Reglas críticas: `evidence_quote` literal obligatorio por cambio, polaridad conservadora (AJUSTE por defecto), neutralidad política absoluta.
-> - Tweaks panel del bundle original descartado en producción — sustituido por un `ThemeToggle.tsx` simple.
-> - El panel admin de revisión humana es V1 (no urgente). El user revisa el JSON `out/<id>.patch.json` a mano antes de seed por ahora.
-> - El usuario prefiere respuestas en español, concisas, sin Co-Authored-By en commits, sin emojis.
->
-> **Archivos clave (D:\\Proyectos\\spain-changelog\\):**
->
-> ```
-> astro.config.mjs
-> package.json                          # npm install ya ejecutado
-> src/pages/parches/[version].astro     # ruta dinámica frontend
-> src/data/seed-2026.18.ts              # datos hardcodeados temporales
-> src/lib/types.ts                      # tipo Patch que el pipeline debe respetar
-> ingest/boe_client.py                  # ★ aquí está el bug del parser
-> ingest/llm.py                         # wrapper claude CLI (no tocar)
-> ingest/pipeline.py                    # 4 stages orchestrator
-> ingest/prompts/*.md                   # 4 prompts editables
-> ingest/run.py                         # entrypoint CLI
-> ingest/README.md                      # docs del módulo
-> HANDOFF.md                            # este documento
-> ```
->
-> **El plan completo está en:** `C:\\Users\\drila\\.claude\\plans\\fetch-this-design-file-reactive-harp.md`
->
-> Empieza arreglando el ParseError del BOE. Lánzame `python -m ingest.run --list` cuando creas que está fix.
+Web tipo "patch notes de videojuego" que reformatea el BOE para audiencia joven (18-35). Pipeline Python ingiere una norma real del BOE → 4 stages de LLM (vía `claude -p` CLI) → objeto `Patch` → InsForge (Postgres) → Astro lo renderiza en build time.
+
+**En producción en Vercel.** Repo: https://github.com/AdrianWheels/spain-changelog (rama `main`).
 
 ---
 
-## Notas para la nueva sesión
+## Estado actual (V0.5 completo y desplegado)
 
-- El usuario salió de Auto Mode antes del handoff. Si vuelves a tener el bug del clasificador (`temporarily unavailable` para `python`/`npm`/`claude`), pídele que confirme con `/config` que sigue fuera de Auto Mode, o que active `bypassPermissions`.
-- El error `xml.etree.ElementTree.ParseError: mismatched tag: line 22, column 4` se reproduce con `python -m ingest.run --list`. El traceback original termina en `boe_client.py:88` → `ET.fromstring(raw)`. Probablemente el endpoint devolvió HTML, no XML, o el XML tiene entidades HTML embebidas.
-- Para inspeccionar manualmente lo que devuelve el BOE: `curl -A "spain-changelog-ingest/0.1" "https://www.boe.es/diario_boe/xml.php?id=BOE-S-20260523" | head -50` (ajustar fecha al sábado más reciente).
+- **Pipeline ingesta**: funcional end-to-end. `ingest/` descarga el sumario y la norma, corre 4 stages y escribe `out/<id>.patch.json`.
+- **InsForge**: proyecto "Parche spain" **ya linkeado** (`.insforge/project.json`, gitignoreado). Schema aplicado vía `migrations/` (8 tablas normalizadas + 4 enums + índices).
+- **Frontend**: `index.astro` ("/") y `parches/[version].astro` leen de InsForge en build time (`src/lib/patches.ts` → `getAllPatches`). Reconstruye el `Patch` desde las tablas, formatea fechas y calcula nav prev/next por fecha.
+- **Síntesis amigable**: el stage3 reescribe cada cambio a lenguaje plano (`display_title`/`display_body`); la cita legal queda como `evidence_quote` de respaldo.
+- **2 parches reales en producción**:
+  - `2026.21` — RD 400/2026, "Cine a 2€ para mayores de 65".
+  - `2026.22` — Ley asturiana 2/2026, "Pequeños directos sin autorización previa".
+
+---
+
+## Flujo de trabajo (cómo sacar y publicar un parche)
+
+```bash
+python -m ingest.run --list            # ver normas del último sumario
+python -m ingest.run                   # autopicker (la más sustancial), ~$0.80 LLM
+python -m ingest.run --id BOE-A-2026-NNNNN   # norma concreta
+# revisar a mano out/<id>.patch.json
+npm run seed                           # sube TODOS los out/*.patch.json a InsForge (idempotente por version)
+npm run build                          # verifica el build local (lee de InsForge)
+git add -A && git commit && git push   # Vercel reconstruye y lee la DB → despliega
+```
+
+> El despliegue lee la DB en build time. Por eso hay que **sembrar antes de pushear** para que el rebuild de Vercel incluya el parche nuevo.
+
+---
+
+## Despliegue (Vercel)
+
+- Build estático Astro (`output` por defecto = static).
+- **Requiere env vars en Vercel** (ya configuradas): `INSFORGE_URL` y `INSFORGE_API_KEY`. Sin ellas el build falla en `getStaticPaths` con "Faltan INSFORGE_URL / INSFORGE_API_KEY" (fue la causa del primer fallo de deploy).
+- En local, esas mismas variables viven en `.env` (gitignoreado). `.env.example` documenta el formato.
+
+---
+
+## Decisiones tomadas (no re-debatir)
+
+- Stack: Astro 5 + React 18 + Tailwind v4 + InsForge. No Next.js, no Supabase.
+- LLM vía `claude -p --output-format json` (CLI, no SDK Anthropic). Modelos: Sonnet 4.6 extracción/síntesis, Haiku 4.5 clasificación, Opus 4.7 revisión.
+- Pipeline 4 stages con prompts en `ingest/prompts/stage{1..4}_*.md`. Reglas: `evidence_quote` literal por cambio, polaridad conservadora (AJUSTE por defecto), neutralidad política.
+- Cliente InsForge **server-only** con la admin api_key (toda la lectura es en build time; cero llamadas desde el navegador). Por eso no hay RLS todavía.
+- La maqueta ficticia `seed-2026.18` fue **eliminada**: la DB solo contiene BOE real.
+- Español, conciso, sin Co-Authored-By en commits, sin emojis.
+
+---
+
+## Próximos pasos (pendientes reales)
+
+1. **Panel admin de revisión (V1)** — el LLM autoflagea warnings (KPIs especulativos, paráfrasis en dev_notes). Hoy la revisión es manual sobre el JSON antes del seed. Falta UI para aprobar/editar y marcar `status='published'`.
+2. **Endpoint `/api/subscribe`** (V0.5 paso 8) — insertar en la tabla `subscriptions` (ya existe).
+3. **Adapters de KPIs reales (V1.5)** — INE/AEAT vía `source_key`; hoy los KPIs son proyecciones del LLM sin baseline.
+4. **Migrar de admin key a anon key + RLS** — si en el futuro hay lecturas desde el cliente (no solo build), montar RLS y usar la anon key en vez de la admin.
+
+## Caveats conocidos
+
+- Warning de hidratación de React en `HeroActions.tsx` (un `<style>` inline con mismatch server/cliente). **Pre-existente del V0**, no afecta a los datos; la página se recupera. Pendiente de limpiar.
+- El pipeline puede equivocarse en cifras/clasificaciones (ej. un renombrado de sección salió como `BUG FIX` en vez de `AJUSTE`). **Revisión humana obligatoria** antes de tratar un parche como verdad publicada.
+
+---
+
+## Archivos clave
+
+```
+ingest/boe_client.py      # cliente API datos abiertos BOE (sumario + norma)
+ingest/pipeline.py        # 4 stages + to_app_shape (Patch del frontend)
+ingest/llm.py             # wrapper claude CLI + extracción robusta de JSON
+ingest/prompts/*.md       # prompts editables
+ingest/run.py             # entrypoint
+migrations/*.sql          # schema InsForge
+scripts/seed.ts           # out/*.patch.json → InsForge (npm run seed)
+src/lib/insforge.ts       # cliente singleton server-only
+src/lib/patches.ts        # reconstruye Patch desde DB + nav
+src/lib/types.ts          # tipo Patch (contrato frontend)
+src/pages/index.astro     # "/" lista parches desde DB
+src/pages/parches/[version].astro   # detalle, getStaticPaths desde DB
+```
+
+El plan original completo: `C:\Users\drila\.claude\plans\fetch-this-design-file-reactive-harp.md`.
